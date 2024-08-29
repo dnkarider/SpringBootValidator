@@ -3,7 +3,7 @@ package com.example.Example;
 import java.util.List;
 
 public class AuthorizationService {
-    UserRepository userRepository;
+    UserRepository userRepository = new UserRepository();
 
     public List<Authorities> getAuthorities(String user, String password) {
         if (isEmpty(user) || isEmpty(password)) {

@@ -9,10 +9,10 @@ import java.util.List;
 @RestController
 public class AuthorizationController {
     AuthorizationService service = new AuthorizationService();
-    String result = "";
 
     @GetMapping("/authorize")
     public String getAuthorities(@RequestParam("user") String user, @RequestParam("password") String password) {
+        String result = "";
         List<Authorities> list = service.getAuthorities(user, password);
         for (Authorities roots : list) {
             if (roots == Authorities.WRITE) {
@@ -22,7 +22,7 @@ public class AuthorizationController {
                 result += Authorities.READ + "\n";
             }
             if (roots == Authorities.DELETE) {
-                result += Authorities.DELETE;
+                result += Authorities.DELETE + "\n";
             }
         }
         return result;
